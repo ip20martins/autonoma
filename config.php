@@ -1,8 +1,9 @@
 <?php
-$servername = "server40.areait.lv";
-$username = "kvdlv_martins";
-$password = "qoXtus-sudzox-7vemmy";
-$dbname = "kvdlv_carrental";
+$env = parse_ini_file('.env');
+$servername = $env ["HOSTNAME"] ;
+$username = $env ["USERNAME"] ;
+$password = $env ["PASSWORD"] ;
+$dbname = $env ["DATABASE"] ;
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
