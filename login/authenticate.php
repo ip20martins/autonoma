@@ -1,10 +1,6 @@
 <?php
 session_start();
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'carrental';
-$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+include '../config.php';
 
 if (!isset($_POST['username'], $_POST['password'])) {
     $_SESSION['error'] = 'Lūdzu aizpildiet abus laukumus!';
@@ -12,7 +8,7 @@ if (!isset($_POST['username'], $_POST['password'])) {
     exit();
 }
 
-if ($stmt = $con->prepare('SELECT user_id, password FROM accounts WHERE username = ?')) {
+if ($stmt = $conn->prepare('SELECT user_id, password FROM accounts WHERE username = ?')) {
     $stmt->bind_param('s', $_POST['username']);
     $stmt->execute();
     $stmt->store_result();

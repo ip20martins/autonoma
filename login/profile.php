@@ -4,11 +4,9 @@ if (!isset($_SESSION['loggedin'])) {
 	header('Location: index.html');
 	exit;
 }
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'login';
-$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+include '../config.php';
+
+$conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 $stmt = $con->prepare('SELECT password, email FROM accounts WHERE user_id = ?');
 $stmt->bind_param('i', $_SESSION['user_id']);
 $stmt->execute();

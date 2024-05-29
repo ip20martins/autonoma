@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "server40.areait.lv";
 $username = "kvdlv_martins";
 $password = "qoXtus-sudzox-7vemmy";
 $dbname = "kvdlv_carrental";
