@@ -1,0 +1,325 @@
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+}
+
+.cars-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.car-box {
+    background-color: whitesmoke;
+    border: 2px solid 	#222222;
+    padding: 10px;
+    margin: 20px;
+    width: calc(33% - 40px);
+    box-sizing: border-box;
+}
+
+.car-image-container {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.car-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.car-text-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.specific-main-info {
+    display: flex;
+    flex-direction: row;
+    gap: -2rem;
+}
+
+.car-text-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.car-text-info p {
+    margin: 5px 0;
+}
+
+.specific-main-info h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.car-text-info p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.car-text-header h1,
+.car-text-info {
+    font-family: 'Roboto', sans-serif;
+}
+
+.car-box::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media (max-width: 1200px) {
+    .car-box {
+        width: calc(33.33% - 40px);
+    }
+}
+
+@media (max-width: 768px) {
+    .car-box {
+        width: calc(50% - 40px);
+    }
+}
+
+@media (max-width: 480px) {
+    .car-box {
+        width: calc(100% - 40px);
+    }
+}
+
+.car-image-container {
+    width:100%;
+
+}
+
+.no-car-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f8f8f8;
+    margin-bottom: 10px;
+}
+.unavailable-date {
+    background-color: #eee;
+    color: #aaa;
+}
+/* specific car */
+.car-details-container {
+    max-width: 1200px;
+    height: auto;
+    background-color: whitesmoke;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 2rem;
+    padding: 20px;
+    gap:4rem;
+    text-transform: capitalize;
+}
+
+.specific-car-info h1, .specific-car-info p {
+    display: inline-block;
+}
+.specific-car-info h1 {
+    margin-right: 20px;
+}
+.specific-car-info {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.car-images {
+    display: flex;
+    margin-top: -10rem;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.main-image-specific {
+    width: 90%;
+    max-height: 30%;
+    overflow: hidden;
+}
+
+.small-images-specific {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.small-images-specific img {
+    width: auto;
+    max-width: 120px;
+    height: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+
+.main-image-specific img {
+    width: 100%;
+    height: auto;
+}
+
+.specific-car-info {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+}
+.lightbox-container {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.lightbox-content {
+    position: relative;
+    margin: auto;
+    width: 80%;
+    max-width: 800px;
+}
+
+.lightbox-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.modal-content, #prevBtn, #nextBtn {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#prevBtn, #nextBtn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+    text-decoration: none;
+}
+
+#nextBtn {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+#prevBtn:hover, #nextBtn:hover {
+    background-color: rgba(0,0,0,0.8);
+}
