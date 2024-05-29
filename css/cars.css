@@ -44,12 +44,6 @@ body {
     width: 100%;
 }
 
-.specific-main-info {
-    display: flex;
-    flex-direction: row;
-    gap: -2rem;
-}
-
 .car-text-info {
     display: flex;
     flex-direction: column;
@@ -124,34 +118,22 @@ body {
     background-color: whitesmoke;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items at the top */
     flex-direction: row;
     margin-top: 2rem;
     padding: 20px;
-    gap:4rem;
+    gap: 4rem;
     text-transform: capitalize;
 }
 
-.specific-car-info h1, .specific-car-info p {
-    display: inline-block;
-}
-.specific-car-info h1 {
-    margin-right: 20px;
-}
-.specific-car-info {
-    font-family: 'Roboto', sans-serif;
-}
-
-
 .car-images {
     display: flex;
-    margin-top: -10rem;
     width: 50%;
-    height: 100%;
     justify-content: center;
     flex-direction: column;
     gap: 2rem;
+    border: solid thin black;
 }
 
 .main-image-specific {
@@ -168,6 +150,30 @@ body {
     align-items: center;
 }
 
+.specific-car-info h1, .specific-car-info p {
+    display: inline-block;
+}
+
+.specific-car-info h1 {
+    margin-right: 20px;
+}
+
+.specific-car-info {
+    border: solid thin black;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-family: 'Roboto', sans-serif;
+    padding: 5rem;
+}
+
+.specific-main-info {
+    display: flex;
+    flex-direction: row;
+    gap: -2rem;
+    margin-top: 0;
+}
+
 .small-images-specific img {
     width: auto;
     max-width: 120px;
@@ -176,18 +182,12 @@ body {
     margin-bottom: 10px;
 }
 
-
 .main-image-specific img {
     width: 100%;
     height: auto;
 }
 
-.specific-car-info {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: 100%;
-}
+
 .lightbox-container {
     display: none;
     position: fixed;

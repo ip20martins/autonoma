@@ -117,22 +117,7 @@
                     </div>
 
                     <div class="form-input">
-                        <select id="color" name="color">
-                            <option value="" disabled selected>Select Car Color</option>
-                            <option value="white">White</option>
-                            <option value="black">Black</option>
-                            <option value="red">Red</option>
-                            <option value="blue">Blue</option>
-                            <option value="green">Green</option>
-                        </select>
-                    </div>
-
-                    <div class="form-input">
-                        <input type="number" id="mileage" name="mileage" placeholder="Mileage">
-                    </div>
-
-                    <div class="form-input">
-                        <input type="number" min="0" max="10000" step="1" id="rentalRate" name="rentalRate" >
+                        <input type="number" min="0" max="10000" step="1" id="rentalRate" name="rentalRate" placeholder="Maksa par 24h">
                     </div>
 
                     <div class="form-input">

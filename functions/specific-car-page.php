@@ -47,7 +47,7 @@ $conn->close();
             for ($i = 2; $i <= 6; $i++) {
                 $imageField = 'image_' . $i;
                 if (!empty($row[$imageField])) {
-                    echo '<img src="' . $row[$imageField] . '" alt="Car Image" style="width:80px;height:auto;" onclick="openModal();currentSlide('.$i.');">';
+                    echo '<img src="' . $row[$imageField] . '" alt="Car Image" onclick="openModal();currentSlide(' . $i . ');">';
                 }
             }
             ?>
@@ -56,7 +56,7 @@ $conn->close();
     <div class="specific-car-info">
         <div class="specific-main-info">
             <h1><?php echo htmlspecialchars($row['car_name']); ?></h1>
-            <h1> <?php echo htmlspecialchars($row['year']); ?></h1>
+            <h1><?php echo htmlspecialchars($row['year']); ?></h1>
         </div>
         <p><strong>Transmission:</strong> <?php echo htmlspecialchars($row['transmission']); ?></p>
         <p><strong>Rental Rate:</strong> €<?php echo htmlspecialchars($row['rental_rate']); ?> per day</p>
