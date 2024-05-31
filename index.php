@@ -2,14 +2,14 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <link href="../css/auth.css" rel="stylesheet" type="text/css">
+    <link href="css/auth.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <title>Login</title>
 </head>
 <body>
 <div class="login">
     <h1>Pieslēdzies</h1>
-    <form action="authenticate.php" method="post">
+    <form action="login/authenticate.php" method="post">
         <label for="username">
             <i class="fas fa-user"></i>
         </label>
@@ -26,7 +26,7 @@
         }
         ?>
         <input type="submit" value="Pieslēgties">
-        <p class="link"><a href="reg.php">Reģistrējies</a></p>
+        <p class="link"><a href="login/reg.php">Reģistrējies</a></p>
     </form>
 </div>
 </body>

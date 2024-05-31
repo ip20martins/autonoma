@@ -4,7 +4,7 @@ include '../config.php';
 
 if (!isset($_POST['username'], $_POST['password'])) {
     $_SESSION['error'] = 'Lūdzu aizpildiet abus laukumus!';
-    header('Location: login.php');
+    header('Location: index.php');
     exit();
 }
 
@@ -31,7 +31,7 @@ if ($stmt = $conn->prepare('SELECT user_id, password FROM accounts WHERE usernam
     }
 
     $stmt->close();
-    header('Location: login.php');
+    header('Location: index.php');
     exit();
 }
 ?>

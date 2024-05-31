@@ -30,7 +30,7 @@
                 }
                 ?>
 				<input type="submit" value="Reģistrējies">
-                                <p class="link"><a href="login.php">Pieslēdzies</a></p>
+                                <p class="link"><a href="../index.php">Pieslēdzies</a></p>
 			</form>
 
 		</div>
