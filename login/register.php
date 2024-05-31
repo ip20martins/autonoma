@@ -30,7 +30,7 @@ if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
                 if ($stmt->num_rows > 0) {
                     $response = 'Lietotājvārds ir aizņemts, lūdzu izvēlieties citu!';
                 } else {
-                    if ($stmt = n->prepare('INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)')) {
+                    if ($stmt = $conn->prepare('INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)')) {
                         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                         $stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
                         $stmt->execute();
