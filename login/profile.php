@@ -6,8 +6,8 @@ if (!isset($_SESSION['loggedin'])) {
 }
 include '../config.php';
 
-$conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-$stmt = $con->prepare('SELECT password, email FROM accounts WHERE user_id = ?');
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$stmt = $conn->prepare('SELECT password, email FROM accounts WHERE user_id = ?');
 $stmt->bind_param('i', $_SESSION['user_id']);
 $stmt->execute();
 $stmt->bind_result($password, $email);
