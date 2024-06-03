@@ -275,6 +275,21 @@ body {
     animation-name: zoom;
     animation-duration: 0.6s;
 }
+input[type="file"] {
+    border: 2px solid #ccc; /* Default border color */
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+input[type="file"].error {
+    border-color: red; /* Border color for error state */
+}
+
+.error-container {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
 
 @keyframes zoom {
     from {transform:scale(0)}

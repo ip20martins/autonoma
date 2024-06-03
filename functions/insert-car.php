@@ -2,8 +2,15 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 include '../config.php';
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!isset($_SESSION['user_id'])) {
+        echo "Error: User not logged in.";
+        exit;
+    }
+
+    $user_id = $_SESSION['user_id'];
     $carName = $_POST['carSearch'] ?? '';
     $transmission = $_POST['transmission'] ?? '';
     $year = $_POST['year'] ?? '';
@@ -28,10 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    $sql = "INSERT INTO cars (car_name, transmission, year, color, mileage, availability_status, rental_rate, description, image_1, image_2, image_3, image_4, image_5, image_6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO cars (user_id, car_name, transmission, year, color, mileage, availability_status, rental_rate, description, image_1, image_2, image_3, image_4, image_5, image_6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $availabilityStatus = 1;
-    $stmt->bind_param("ssissdssssssss", $carName, $transmission, $year, $color, $mileage, $availabilityStatus, $rentalRate, $description, $images[1], $images[2], $images[3], $images[4], $images[5], $images[6]);
+    $stmt->bind_param("ississdssssssss", $user_id, $carName, $transmission, $year, $color, $mileage, $availabilityStatus, $rentalRate, $description, $images[1], $images[2], $images[3], $images[4], $images[5], $images[6]);
 
     if ($stmt->execute()) {
         header("Location: index.php?success=1");
