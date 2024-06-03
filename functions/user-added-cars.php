@@ -134,10 +134,10 @@ if ($result->num_rows > 0) {
             while ($rented_row = $rented_result->fetch_assoc()) {
                 echo '<div class="rental-date">';
                 echo '<p>' . $rented_row['rent_date'] . '</p>';
-                echo '<form method="post" class="cancel-reservation-form">';
+                echo '<form method="post">';
                 echo '<input type="hidden" name="car_id" value="' . $row['car_id'] . '">';
                 echo '<input type="hidden" name="rent_date" value="' . $rented_row['rent_date'] . '">';
-                echo '<button type="button" onclick="cancelReservation(event)">Cancel</button>';
+                echo '<button type="submit" name="cancel_reservation">Cancel</button>';
                 echo '</form>';
                 echo '</div>';
             }
@@ -147,10 +147,11 @@ if ($result->num_rows > 0) {
         $rented_stmt->close();
 
         // Edit and Delete buttons
+        // Edit and Delete buttons
         echo '<button onclick="openModal(' . $row['car_id'] . ', \'' . $row['car_name'] . '\', \'' . $row['rental_rate'] . '\', \'' . $row['year'] . '\', \'' . $row['color'] . '\', \'' . $row['mileage'] . '\', \'' . $row['transmission'] . '\', \'' . $row['description'] . '\')">Edit</button>';
-        echo '<form method="post" class="delete-car-form">';
+        echo '<form method="post">';
         echo '<input type="hidden" name="car_id" value="' . $row['car_id'] . '">';
-        echo '<button type="button" onclick="deleteCar(event)">Delete</button>';
+        echo '<button type="submit" name="delete_car">Delete</button>';
         echo '</form>';
 
         echo '</div>';
@@ -161,6 +162,36 @@ if ($result->num_rows > 0) {
     echo "No cars added.";
 }
 
+// Handle cancellation form submission
+if (isset($_POST['cancel_reservation'])) {
+    $car_id = $_POST['car_id'];
+    $rent_date = $_POST['rent_date'];
+    $cancel_result = cancelReservation($conn, $car_id, $rent_date);
+}
+
+// Handle delete car form submission
+if (isset($_POST['delete_car'])) {
+    $car_id = $_POST['car_id'];
+    $delete_result = deleteCar($conn, $car_id);
+    echo "<script>alert('$delete_result');</script>";
+    echo "<script>window.location.href = 'user-added-cars.php';</script>";
+}
+
+// Handle updating car details form submission
+if (isset($_POST['update_car_details'])) {
+    $car_id = $_POST['car_id'];
+    $car_name = $_POST['car_name'];
+    $rental_rate = $_POST['rental_rate'];
+    $year = !empty($_POST['year']) ? $_POST['year'] : null;
+    $color = $_POST['color'];
+    $mileage = $_POST['mileage'];
+    $transmission = $_POST['transmission'];
+    $description = $_POST['description'];
+
+    $update_result = updateCarDetails($conn, $car_id, $car_name, $rental_rate, $year, $color, $mileage, $transmission, $description);
+    echo "<script>window.location.href = 'your-cars.php';</script>";
+}
+
 ?>
 
 <!-- Modal -->
@@ -169,7 +200,7 @@ if ($result->num_rows > 0) {
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2>Edit Car Details</h2>
-        <form method="post" id="update-car-form">
+        <form method="post">
             <input type="hidden" id="edit_car_id" name="car_id">
             <p>Car Name: <input type="text" id="edit_car_name" name="car_name"></p>
             <p>Rental Rate: <input type="text" id="edit_rental_rate" name="rental_rate"></p>
@@ -199,48 +230,7 @@ if ($result->num_rows > 0) {
     function closeModal() {
         document.getElementById("editModal").style.display = "none";
     }
-
-    function cancelReservation(event) {
-        event.preventDefault();
-        const form = event.target.closest('form');
-        const formData = new FormData(form);
-
-        fetch('cancel_reservation.php', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.text())
-            .then (result) => {
-            document.getElementById("message").innerText = result;
-            // Assuming you have a div with class="rental-date" to remove after cancellation
-            const rentalDateDiv = form.closest('.rental-date');
-            rentalDateDiv.parentNode.removeChild(rentalDateDiv);
-        })
-    .catch(error => console.error('Error:', error));
-    }
-
-    function deleteCar(event) {
-        event.preventDefault();
-        const form = event.target.closest('form');
-        const formData = new FormData(form);
-
-        fetch('delete_car.php', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.text())
-            .then((result) => {
-                // Assuming you have a div with id="message" to display messages
-                document.getElementById("message").innerText = result;
-                // Assuming you have a div with class="car-box" to remove after deletion
-                const carBox = form.closest('.car-box');
-                carBox.parentNode.removeChild(carBox);
-            })
-            .catch(error => console.error('Error:', error));
-    }
 </script>
 
-<div id="message"></div>
 </body>
 </html>
-
