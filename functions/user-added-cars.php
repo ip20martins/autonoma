@@ -230,6 +230,64 @@ if (isset($_POST['update_car_details'])) {
     function closeModal() {
         document.getElementById("editModal").style.display = "none";
     }
+
+    function cancelReservation(event) {
+        event.preventDefault();
+        const form = event.target.closest('form');
+        const formData = new FormData(form);
+
+        fetch('cancel-user-reservation.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(result => {
+                document.getElementById("message").innerText = result;
+                // Assuming you have a div with class="rental-date" to remove after cancellation
+                const rentalDateDiv = form.closest('.rental-date');
+                rentalDateDiv.parentNode.removeChild(rentalDateDiv);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function deleteCar(event) {
+        event.preventDefault();
+        const form = event.target.closest('form');
+        const formData = new FormData(form);
+
+        fetch('cancel-user-rented-date.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(result => {
+                // Assuming you have a div with id="message" to display messages
+                document.getElementById("message").innerText = result;
+                // Assuming you have a div with class="car-box" to remove after deletion
+                const carBox = form.closest('.car-box');
+                carBox.parentNode.removeChild(carBox);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Handling the form submission for updating car details
+    document.getElementById("update-car-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+
+        fetch('delete-user-car.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(result => {
+                document.getElementById("message").innerText = result;
+                // Close the modal after updating car details
+                closeModal();
+            })
+            .catch(error => console.error('Error:', error));
+    });
 </script>
 
 </body>
