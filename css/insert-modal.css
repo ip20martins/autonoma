@@ -5,11 +5,13 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .modal {
-    display: none;
     position: fixed;
     z-index: 1;
     padding-top: 100px;
@@ -18,16 +20,17 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-content {
-    background-color: #fefefe;
+    position: relative;
     margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 70%;
+    padding: 0;
+    width: 100%;
+    max-width: 910px;
+    background-color: #fff;
 }
 
 .form-main {
@@ -84,6 +87,23 @@ body {
     resize: none;
 }
 
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-image {
+    width: 100%;
+}
+
 input[type="color"] {
     appearance: none;
     -moz-appearance: none;
@@ -107,6 +127,32 @@ input[type="color"] {
 .right-row1,.right-row2 {
     display: flex;
     flex-direction: column;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev {
+    left: 0;
+    border-radius: 3px 3px 0 0;
+}
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
 }
 
 input[type="file"] {
@@ -153,9 +199,65 @@ input[type="file"] {
     font-weight: bold;
 }
 
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
 .close:hover,
 .close:focus {
-    color: #000;
+    color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+@media (max-width: 900px) {
+    .navtop div {
+        flex-direction: column;
+    }
+    .navtop div a {
+        padding: 10px;
+        margin: 5px 0;
+    }
+    .form-main {
+        flex-direction: column;
+    }
+    .left, .right {
+        min-width: 100%;
+        padding: 5px;
+    }
+    .right-row1, .right-row2 {
+        flex-direction: column;
+    }
+
+    .image-preview {
+        width: 370px;
+        height: calc(370px * 9 / 16);
+
+    }
+
+    .photo-upload {
+        width: auto;
+    }
+
+
+}
+
+@media (max-width: 780px) {
+
+    .right {
+        flex-direction: column;
+    }
+
+    .image-preview {
+        width: 100%; /* Make the image preview take the full width of its container */
+        height: 150px; /* Maintain aspect ratio */
+    }
+
+    .photo-upload {
+        width: auto;
+    }
 }

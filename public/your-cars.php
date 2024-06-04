@@ -16,10 +16,13 @@
 <nav class="navtop">
     <div>
         <h1>Auto noma</h1>
-        <a href="index.php"><i class="fas fa-sign-out-alt"></i>Apskatīt automašīnas</a>
-        <a href="../login/logout.php"><i class="fas fa-sign-out-alt"></i>Izrakstīties</a>
+        <a href="index.php">Sākumlapa</a>
+        <a href="user-rented-cars.php">Apskatīt nomātās automašīnas</a>
+        <a href="#" id="openInsertModal">Pievienot savu automašīnu</a>
+        <a href="../login/logout.php">Izrakstīties</a>
     </div>
 </nav>
+
 <div class="cars-container">
     <?php include "../functions/user-added-cars.php"; "../functions/cancel-user-reservation.php"; ?>
 </div>

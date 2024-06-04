@@ -133,7 +133,6 @@ body {
     justify-content: center;
     flex-direction: column;
     gap: 2rem;
-    border: solid thin black;
 }
 
 .main-image-specific {
@@ -159,7 +158,6 @@ body {
 }
 
 .specific-car-info {
-    border: solid thin black;
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -202,9 +200,6 @@ body {
 
 .lightbox-content {
     position: relative;
-    margin: auto;
-    width: 80%;
-    max-width: 800px;
 }
 
 .lightbox-image {
@@ -219,8 +214,8 @@ body {
     right: 35px;
     color: white;
     font-size: 40px;
+    font-weight: bold;
     cursor: pointer;
-    z-index: 1001;
 }
 
 .prev, .next {
@@ -251,6 +246,30 @@ body {
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+@media only screen and (max-width: 768px) {
+    .car-details-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .car-images, .specific-car-info {
+        width: 100%;
+    }
+
+    .main-image-specific {
+        width: 100%;
+        max-height: unset;
+    }
+
+    .lightbox-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 
 .modal {
     display: none;

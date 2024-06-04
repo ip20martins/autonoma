@@ -12,78 +12,15 @@
     <script src="../js/saveRentedCar.js"></script>
     <script src="../js/insertModal.js"></script>
     <title>Automašīnas</title>
-    <style>
-        .modal {
-            display none:
-            position: fixed;
-            z-index: 1;
-            padding-top: 100px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.9);
-        }
-        .modal-content {
-            position: relative;
-            margin: auto;
-            padding: 0;
-            width: 100%;
-            max-width: 910px;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .modal-image {
-            width: 100%;
-        }
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -50px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-        }
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-        .prev {
-            left: 0;
-            border-radius: 3px 3px 0 0;
-        }
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-    </style>
 </head>
 <body class="loggedin">
 <nav class="navtop">
     <div>
         <h1>Auto noma</h1>
-        <a href="user-rented-cars.php"><i class="fa fa-search"></i>Apskatīt nomātās automašīnas</a>
-        <a href="your-cars.php"><i class="fa fa-search"></i>Apskatīt savas automašīnas</a>
-        <a href="#" id="openInsertModal"><i class="fa fa-plus-square-o"></i> Pievienot savu automašīnu</a>
-        <a href="../login/logout.php"><i class="fas fa-sign-out-alt"></i>Izrakstīties</a>
+        <a href="user-rented-cars.php">Apskatīt nomātās automašīnas</a>
+        <a href="your-cars.php">Apskatīt savas automašīnas</a>
+        <a href="#" id="openInsertModal">Pievienot savu automašīnu</a>
+        <a href="../login/logout.php">Izrakstīties</a>
     </div>
 </nav>
 
@@ -99,7 +36,7 @@
                 <script src="../js/insertCarModal.js"></script>
                 <div class="left">
                     <div class="form-input">
-                        <input type="text" id="carSearch" name="carSearch" placeholder="Search Car Brand">
+                        <input type="text" id="carSearch" name="carSearch" placeholder="Meklējiet automašīnu">
                         <script src="../js/insertCarModal.js"></script>
                         <div id="carDropdown" class="dropdown-content"></div>
                         <div id="error" style="color: red;"></div>
@@ -107,14 +44,14 @@
 
                     <div class="form-input">
                         <select id="transmission" name="transmission">
-                            <option value="" disabled selected>Select Transmission</option>
-                            <option value="Manual">Manual</option>
-                            <option value="Automatic">Automatic</option>
+                            <option value="" disabled selected>Transmisija</option>
+                            <option value="Manual">Manuāls</option>
+                            <option value="Automatic">Automāts</option>
                         </select>
                     </div>
 
                     <div class="form-input">
-                        <input type="number" id="year" name="year" placeholder="Year" min="1960" max="2024">
+                        <input type="number" id="year" name="year" placeholder="Ražošanas gads" min="1960" max="2024">
                     </div>
 
                     <div class="form-input">
@@ -122,11 +59,11 @@
                     </div>
 
                     <div class="form-input">
-                        <textarea id="description" name="description" placeholder="Description" maxlength="300"></textarea>
+                        <textarea id="description" name="description" placeholder="Automašinas apraksts" maxlength="300"></textarea>
                         <div id="char-counter">0</div>
                         <script src="../js/insertModalCharCounter.js"></script>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Pievienot</button>
                 </div>
 
                 <div class="right">
@@ -146,7 +83,6 @@
                         <label for="image4" class="photo-upload">Attēls</label>
                         <input id="image4" name="image4" type="file" accept="image/*" onchange="previewImage(this, 'preview4')"/>
                         <div id="preview4" class="image-preview"><i class="fa fa-image" style="font-size: 60px; color:lightgrey"></i></div>
-
                     </div>
                     <div class="right-row2">
                         <label for="image5" class="photo-upload">Attēls</label>
@@ -164,7 +100,6 @@
                         <label for="image8" class="photo-upload">Attēls</label>
                         <input id="image8" name="image8" type="file" accept="image/*" onchange="previewImage(this, 'preview8')"/>
                         <div id="preview8" class="image-preview"><i class="fa fa-image" style="font-size: 60px; color:lightgrey"></i></div>
-
                     </div>
                 </div>
             </div>

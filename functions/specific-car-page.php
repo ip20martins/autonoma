@@ -58,11 +58,11 @@ $conn->close();
             <h1><?php echo htmlspecialchars($row['car_name']); ?></h1>
             <h1><?php echo htmlspecialchars($row['year']); ?></h1>
         </div>
-        <p><strong>Transmission:</strong> <?php echo htmlspecialchars($row['transmission']); ?></p>
-        <p><strong>Rental Rate:</strong> €<?php echo htmlspecialchars($row['rental_rate']); ?> per day</p>
+        <p><strong>Transmisija:</strong> <?php echo htmlspecialchars($row['transmission']); ?></p>
+        <p><strong>Nomas cena:</strong> €<?php echo htmlspecialchars($row['rental_rate']); ?></p>
         <p><?php echo htmlspecialchars($row['description']); ?></p>
         <?php
-        echo '<button class="rent-button" data-car-id="' . htmlspecialchars($row['car_id']) . '">Iznomāt</button>';
+        echo '<button class="rent-button" data-car-id="' . htmlspecialchars($row['car_id']) . '">Nomāt</button>';
         echo '<div class="date-picker" id="datepicker-' . htmlspecialchars($row['car_id']) . '" style="display: none;">';
         echo '</div>';
         ?>

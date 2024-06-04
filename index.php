@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +13,27 @@
 <div class="login">
     <h1>Pieslēdzies</h1>
     <form action="login/authenticate.php" method="post">
-        <label for="username">
-            <i class="fas fa-user"></i>
-        </label>
-        <input type="text" name="username" placeholder="Lietotājvārds" id="username" required>
-        <label for="password">
-            <i class="fas fa-lock"></i>
-        </label>
-        <input type="password" name="password" placeholder="Parole" id="password" required>
+        <input type="text" name="username" placeholder="Lietotājvārds" id="username" value="<?php echo isset($_SESSION['username_value']) ? $_SESSION['username_value'] : ''; ?>" >
         <?php
-        session_start();
+        if (isset($_SESSION['username_error'])) {
+            echo '<div class="error">' . $_SESSION['username_error'] . '</div>';
+            unset($_SESSION['username_error']);
+        }
+        ?>
+        <input type="password" name="password" placeholder="Parole" id="password" value="<?php echo isset($_SESSION['password_value']) ? $_SESSION['password_value'] : ''; ?>" >
+        <?php
+        if (isset($_SESSION['password_error'])) {
+            echo '<div class="error">' . $_SESSION['password_error'] . '</div>';
+            unset($_SESSION['password_error']);
+        }
+        ?>
+        <?php
+        if (isset($_SESSION['empty_error'])) {
+            echo '<div class="error">' . $_SESSION['empty_error'] . '</div>';
+            unset($_SESSION['empty_error']);
+        }
+        ?>
+        <?php
         if (isset($_SESSION['error'])) {
             echo '<div class="error">' . $_SESSION['error'] . '</div>';
             unset($_SESSION['error']);

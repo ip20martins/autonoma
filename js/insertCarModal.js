@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 errorSpan.id = 'yearError';
                 errorSpan.className = 'error-message';
                 errorSpan.style.color = 'red';
-                errorSpan.innerText = 'Please enter a year between 1960 and 2024.';
+                errorSpan.innerText = 'Lūdzu ievadiet gadu starp 1960 un 2024.';
                 yearInput.parentNode.appendChild(errorSpan);
             }
             isValid = false;
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 errorSpan.id = 'descriptionError';
                 errorSpan.className = 'error-message';
                 errorSpan.style.color = 'red';
-                errorSpan.innerText = 'Please enter a description.';
+                errorSpan.innerText = 'Lūdzu ievadiet aprakstu';
                 descriptionInput.parentNode.appendChild(errorSpan);
             }
             isValid = false;
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 errorSpan.id = 'priceError';
                 errorSpan.className = 'error-message';
                 errorSpan.style.color = 'red';
-                errorSpan.innerText = 'Please enter a valid price.';
+                errorSpan.innerText = 'Lūdzu ievadiet derīgu cenu.';
                 rentalRateInput.parentNode.appendChild(errorSpan);
             }
             isValid = false;
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 transmissionError.id = 'transmissionError';
                 transmissionError.className = 'error-message';
                 transmissionError.style.color = 'red';
-                transmissionError.innerText = 'Please select a transmission type.';
+                transmissionError.innerText = 'Lūdzu izvēlieties transmisijas tipu.';
                 transmissionInput.parentNode.appendChild(transmissionError);
             }
             isValid = false;
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     errorSpan.id = imageErrorId;
                     errorSpan.className = 'error-message';
                     errorSpan.style.color = 'red';
-                    errorSpan.innerText = 'Please upload an image.';
+                    errorSpan.innerText = 'Lūdzu pievienojiet attēlu.';
                     previewContainer.appendChild(errorSpan);
                 }
                 isValid = false;
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 errorSpan.id = 'yearError';
                 errorSpan.className = 'error-message';
                 errorSpan.style.color = 'red';
-                errorSpan.innerText = 'Please enter a year between 1960 and 2024.';
+                errorSpan.innerText = 'Lūdzu ievadiet gadu starp 1960 un 2024.';
                 yearInput.parentNode.appendChild(errorSpan);
             }
         }
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 errorSpan.id = 'descriptionError';
                 errorSpan.className = 'error-message';
                 errorSpan.style.color = 'red';
-                errorSpan.innerText = 'Please enter a description.';
+                errorSpan.innerText = 'Lūdzu ievadiet aprakstu.';
                 descriptionInput.parentNode.appendChild(errorSpan);
             }
         } else {
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     errorSpan.id = imageErrorId;
                     errorSpan.className = 'error-message';
                     errorSpan.style.color = 'red';
-                    errorSpan.innerText = '<br>Please upload an image.';
+                    errorSpan.innerText = 'Lūdzu pievienojiet attēlu.';
                     previewContainer.appendChild(errorSpan);
                 }
             }
@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 carSearch.style.borderColor = isCarValid ? 'green' : 'red';
 
                 if (!isCarValid && enteredCar.trim() !== "") {
-                    error.textContent = 'Please select a valid car brand.';
+                    error.textContent = 'Lūdzu ievadiet derīgu automašīnas marku.';
                 } else {
                     error.textContent = '';
                 }
@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function() {
     carForm.addEventListener('submit', function(event) {
         const enteredCar = carSearch.value.toLowerCase();
         if (!carBrands.includes(enteredCar)) {
-            error.textContent = 'Please select a valid car brand.';
+            error.textContent = 'Lūdzu ievadiet derīgu automašīnas marku.';
             event.preventDefault();
         } else {
             error.textContent = '';
