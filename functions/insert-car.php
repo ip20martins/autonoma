@@ -32,10 +32,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    $sql = "INSERT INTO cars (user_id, car_name, transmission, year, availability_status, rental_rate, description, image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    // Pad the images array to ensure it has exactly 6 elements
+    $images = array_pad($images, 6, NULL);
+
+    $sql = "INSERT INTO cars (user_id, car_name, transmission, year, mileage, availability_status, rental_rate, description, image_1, image_2, image_3, image_4, image_5, image_6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $availabilityStatus = 1;
-    $stmt->bind_param("ississdssssss", $user_id, $carName, $transmission, $year, $availabilityStatus, $rentalRate, $description, $images[1], $images[2], $images[3], $images[4], $images[5], $images[6], $images[7], $images[8]);
+
+    // Create the type definition string
+    $types = "ississdssssss";
+
+    // Bind the parameters
+    $stmt->bind_param(
+            $types,
+            $user_id, $carName, $transmission, $year, $mileage, $availabilityStatus, $rentalRate, $description,
+            $images[0], $images[1], $images[2], $images[3], $images[4], $images[5]
+    );
 
     if ($stmt->execute()) {
         header("Location: index.php?success=1");
