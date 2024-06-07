@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener('submit', function(event) {
         let isValid = true;
 
-        // Validate text inputs
         const inputs = [carSearchInput, rentalRateInput];
 
         inputs.forEach(input => {
@@ -22,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        // Validate year input
         const yearValue = parseInt(yearInput.value.trim());
         const yearError = document.getElementById('yearError');
         if (isNaN(yearValue) || yearValue < 1960 || yearValue > 2024) {
@@ -43,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        // Validate description input
         const descriptionValue = descriptionInput.value.trim();
         const descriptionError = document.getElementById('descriptionError');
         if (descriptionValue === "") {
@@ -64,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        // Validate rental rate input
         const priceValue = parseInt(rentalRateInput.value.trim());
         const priceError = document.getElementById('priceError');
         if (isNaN(priceValue) || priceValue <= 0) {
@@ -85,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        // Validate transmission input
         if (transmissionInput.value === "") {
             transmissionInput.style.borderColor = 'red';
             let transmissionError = document.getElementById('transmissionError');
@@ -106,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        // Validate image inputs
         let hasImage = false;
         imageInputs.forEach((input, index) => {
             const imageErrorId = `imageError${index + 1}`;
@@ -141,7 +135,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Add event listeners to inputs for real-time validation
     [carSearchInput, rentalRateInput, transmissionInput].forEach(input => {
         input.addEventListener('input', function() {
             if (input.value.trim() !== "") {
@@ -198,7 +191,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Add event listener for real-time image validation
     imageInputs.forEach((input, index) => {
         input.addEventListener('change', function() {
             const imageErrorId = `imageError${index + 1}`;
@@ -290,4 +282,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Added Cars</title>
+
 </head>
 <body>
 
@@ -21,9 +22,6 @@ $user_id = $_SESSION['user_id'];
 function cancelReservation($conn, $car_id, $rent_date) {
 	$sql = "DELETE FROM user_rented_cars WHERE car_id = ? AND rent_date = ?";
 	$stmt = $conn->prepare($sql);
-	if (!$stmt) {
-		die("Prepare failed: " . $conn->error);
-	}
 	$stmt->bind_param("is", $car_id, $rent_date);
 	$stmt->execute();
 
@@ -37,9 +35,6 @@ function cancelReservation($conn, $car_id, $rent_date) {
 function deleteCar($conn, $car_id) {
 	$sql = "DELETE FROM cars WHERE car_id = ?";
 	$stmt = $conn->prepare($sql);
-	if (!$stmt) {
-		die("Prepare failed: " . $conn->error);
-	}
 	$stmt->bind_param("i", $car_id);
 	$stmt->execute();
 
@@ -52,9 +47,6 @@ function deleteCar($conn, $car_id) {
 
 $sql = "SELECT * FROM cars WHERE user_id = ?";
 $stmt = $conn->prepare($sql);
-if (!$stmt) {
-	die("Prepare failed: " . $conn->error);
-}
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -79,9 +71,6 @@ if ($result->num_rows > 0) {
 
 		$rented_sql = "SELECT rent_date FROM user_rented_cars WHERE car_id = ?";
 		$rented_stmt = $conn->prepare($rented_sql);
-		if (!$rented_stmt) {
-			die("Prepare failed: " . $conn->error);
-		}
 		$rented_stmt->bind_param("i", $row['car_id']);
 		$rented_stmt->execute();
 		$rented_result = $rented_stmt->get_result();
@@ -120,15 +109,53 @@ if (isset($_POST['cancel_reservation'])) {
 	$car_id = $_POST['car_id'];
 	$rent_date = $_POST['rent_date'];
 	$cancel_result = cancelReservation($conn, $car_id, $rent_date);
-	echo "<script>alert('$cancel_result');</script>";
 }
 
 if (isset($_POST['delete_car'])) {
 	$car_id = $_POST['car_id'];
 	$delete_result = deleteCar($conn, $car_id);
-	echo "<script>alert('$delete_result'); window.location.href = 'your-cars.php';</script>";
+	echo "<script>window.location.href = 'your-cars.php';</script>";
 }
+
 ?>
+
+<script>
+    function cancelReservation(event) {
+        event.preventDefault();
+        const form = event.target.closest('form');
+        const formData = new FormData(form);
+
+        fetch('cancel-user-reservation.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(result => {
+                document.getElementById("message").innerText = result;
+                const rentalDateDiv = form.closest('.rental-date');
+                rentalDateDiv.parentNode.removeChild(rentalDateDiv);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function deleteCar(event) {
+        event.preventDefault();
+        const form = event.target.closest('form');
+        const formData = new FormData(form);
+
+        fetch('cancel-user-rented-date.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(result => {
+                document.getElementById("message").innerText = result;
+                const carBox = form.closest('.car-box');
+                carBox.parentNode.removeChild(carBox);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
 
 </body>
 </html>

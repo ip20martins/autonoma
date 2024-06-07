@@ -5,7 +5,6 @@ include '../config.php';
 $username = isset($_POST['username']) ? $_POST['username'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-// Check for empty fields and set appropriate error messages
 if (empty($username) && empty($password)) {
     $_SESSION['error'] = 'Lūdzu aizpildiet abus laukumus!';
     $_SESSION['username_value'] = $username;
@@ -24,7 +23,6 @@ if (empty($username) && empty($password)) {
     exit();
 }
 
-// Proceed with the database query if no fields are empty
 if ($stmt = $conn->prepare('SELECT user_id, password FROM accounts WHERE username = ?')) {
     $stmt->bind_param('s', $username);
     $stmt->execute();
@@ -46,11 +44,6 @@ if ($stmt = $conn->prepare('SELECT user_id, password FROM accounts WHERE usernam
             header('Location: ../index.php');
             exit();
         }
-    } else {
-        $_SESSION['error'] = 'Nepareiza parole vai lietotājvārds!';
-        $_SESSION['username_value'] = $username;
-        header('Location: ../index.php');
-        exit();
     }
     $stmt->close();
 }
