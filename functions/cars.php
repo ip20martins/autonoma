@@ -1,7 +1,7 @@
 <?php
 include '../config.php';
-session_start();
 
+// Ensure user is logged in
 if (!isset($_SESSION['user_id'])) {
     echo "Error: User not logged in.";
     exit;
