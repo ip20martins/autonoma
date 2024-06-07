@@ -1,14 +1,8 @@
 <?php
 include '../config.php';
 
-
-
-
-$sql = "SELECT * FROM cars WHERE user_id != ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
+$sql = "SELECT * FROM cars";
+$result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -35,6 +29,5 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 
-$stmt->close();
 $conn->close();
 ?>
