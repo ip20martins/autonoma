@@ -22,16 +22,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $targetDir = "../uploads/";
             $targetFile = $targetDir . basename($_FILES[$imageField]['name']);
             if (move_uploaded_file($_FILES[$imageField]['tmp_name'], $targetFile)) {
-                $images[$i] = $targetFile;
+                $images[] = $targetFile;  // Add to the array
             } else {
-                $images[$i] = NULL;
+                $images[] = NULL;  // Add null if upload fails
             }
         } else {
-            $images[$i] = NULL;
+            $images[] = NULL;  // Add null if file not provided
         }
     }
 
-    // Pad the images array to ensure it has exactly 8 elements
+    // Ensure the images array has exactly 8 elements
     $images = array_pad($images, 8, NULL);
 
     $sql = "INSERT INTO cars (user_id, car_name, transmission, year, availability_status, rental_rate, description, image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
