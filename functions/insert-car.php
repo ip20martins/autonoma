@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    $sql = "INSERT INTO cars (user_id, car_name, transmission, year, mileage, availability_status, rental_rate, description, image_1, image_2, image_3, image_4, image_5, image_6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO cars (user_id, car_name, transmission, year, mileage, availability_status, rental_rate, description, image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $availabilityStatus = 1;
-    $stmt->bind_param("ississdssssss", $user_id, $carName, $transmission, $year, $mileage, $availabilityStatus, $rentalRate, $description, $images[1], $images[2], $images[3], $images[4], $images[5], $images[6]);
+    $stmt->bind_param("ississdssssss", $user_id, $carName, $transmission, $year, $mileage, $availabilityStatus, $rentalRate, $description, $images[1], $images[2], $images[3], $images[4], $images[5], $images[6], $images[7], $images[8]);
 
     if ($stmt->execute()) {
         header("Location: index.php?success=1");
