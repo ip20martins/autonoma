@@ -39,13 +39,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $availabilityStatus = 1;
 
     // Create the type definition string
-    $types = "issisdssssssss";
+    $types = "isssdssssssssss";
 
     // Bind the parameters
     $stmt->bind_param(
             $types,
             $user_id, $carName, $transmission, $year, $availabilityStatus, $rentalRate, $description,
-            $images[1], $images[2], $images[3], $images[4], $images[5], $images[6], $images[7], $images[8]
+            $images[0], $images[1], $images[2], $images[3], $images[4], $images[5], $images[6], $images[7]
     );
 
     if ($stmt->execute()) {
