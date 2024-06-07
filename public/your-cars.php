@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="../js/saveRentedCar.js"></script>
-    <title>Nomātās mašīnas </title>
+    <title>Nomātās automašīnas </title>
 </head>
 <body class="loggedin">
 <nav class="navtop">
