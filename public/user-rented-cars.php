@@ -18,7 +18,6 @@
         <h1>Auto noma</h1>
         <a href="index.php">Sākumlapa</a>
         <a href="your-cars.php">Apskatīt savas automašīnas</a>
-        <a href="#" id="openInsertModal">Pievienot savu automašīnu</a>
         <a href="../login/logout.php">Izrakstīties</a>
     </div>
 </nav>
