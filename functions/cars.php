@@ -1,14 +1,8 @@
 <?php
-session_start();
 include '../config.php';
 
-// Ensure user is logged in
-if (!isset($_SESSION['user_id'])) {
-    echo "Error: User not logged in.";
-    exit;
-}
 
-$user_id = $_SESSION['user_id'];
+
 
 $sql = "SELECT * FROM cars WHERE user_id != ?";
 $stmt = $conn->prepare($sql);
