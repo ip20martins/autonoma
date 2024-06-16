@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     if ($stmt->execute()) {
-        header("Location: ../your-cars.php");
+        header("Location: ../public/your-cars.php");
     } else {
         echo "Error: " . $stmt->error;
     }
